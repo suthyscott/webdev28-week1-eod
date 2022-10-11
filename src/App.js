@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react"
+import "./App.css"
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [newBreed, setNewBreed] = useState("")
+    const [dogBreeds, setDogBreeds] = useState([])
+
+    const handleChange = e => {
+        e.preventDefault()
+        setNewBreed(e.target.value)
+    }
+    const handleSubmit = e => {
+        e.preventDefault()
+        setDogBreeds([...dogBreeds, newBreed])
+        setNewBreed("")
+    }
+
+    console.log(dogBreeds)
+    
+    return (
+        <div className="App">
+            <form onSubmit={e => handleSubmit(e)}>
+                <label>New dog breed</label>
+                <input value={newBreed} onChange={e => handleChange(e)} />
+            </form>
+        </div>
+    )
 }
 
-export default App;
+export default App
