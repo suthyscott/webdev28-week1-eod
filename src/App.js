@@ -19,6 +19,12 @@ function App() {
     const updateFavorite = newFav => {
         setFavoriteBreed(newFav)
     }
+    const deleteBreed = index => {
+        if(dogBreeds[index] === favoriteBreed){
+            setFavoriteBreed('Undetermined')
+        }
+        setDogBreeds(dogBreeds.filter((e,i) => i !== index))
+    }
     
     // console.log(dogBreeds)
     
@@ -32,7 +38,12 @@ function App() {
             {/* <DogBreed dogBreed={dogBreeds[0]} updateFavorite={updateFavorite}/>
             <DogBreed dogBreed={dogBreeds[1]} updateFavorite={updateFavorite}/> */}
             {dogBreeds.map((breed, index)=> {
-                return <DogBreed dogBreed={breed} updateFavorite={updateFavorite} key={index}/>
+                return <DogBreed 
+                dogBreed={breed} 
+                updateFavorite={updateFavorite} 
+                deleteBreed={deleteBreed}
+                index={index}
+                key={index}/>
             })}
         </div>
     )

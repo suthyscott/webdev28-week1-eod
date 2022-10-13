@@ -4,6 +4,7 @@ const DogBreed = props => {
         <div>
           {props.dogBreed}
           <button onClick={() => props.updateFavorite(props.dogBreed)}>Set as Favorite</button>
+          <button onClick={() => props.deleteBreed(props.index)}>Delete</button>
         </div>
     )
 }
