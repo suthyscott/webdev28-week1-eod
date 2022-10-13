@@ -4,7 +4,7 @@ import DogBreed from './DogBreed'
 
 function App() {
     const [newBreed, setNewBreed] = useState("")
-    const [dogBreeds, setDogBreeds] = useState(['Husky', 'Chihuahua'])
+    const [dogBreeds, setDogBreeds] = useState(['Husky', 'Chihuahua', 'Beagle', "Labrador"])
     const [favoriteBreed, setFavoriteBreed] = useState('Undetermined')
 
     const handleChange = e => {
@@ -20,7 +20,7 @@ function App() {
         setFavoriteBreed(newFav)
     }
     
-    console.log(dogBreeds)
+    // console.log(dogBreeds)
     
     return (
         <div className="App">
@@ -29,8 +29,11 @@ function App() {
                 <label>New dog breed</label>
                 <input value={newBreed} onChange={e => handleChange(e)} />
             </form>
-            <DogBreed dogBreed={dogBreeds[0]} updateFavorite={updateFavorite}/>
-            <DogBreed dogBreed={dogBreeds[1]} updateFavorite={updateFavorite}/>
+            {/* <DogBreed dogBreed={dogBreeds[0]} updateFavorite={updateFavorite}/>
+            <DogBreed dogBreed={dogBreeds[1]} updateFavorite={updateFavorite}/> */}
+            {dogBreeds.map((breed, index)=> {
+                return <DogBreed dogBreed={breed} updateFavorite={updateFavorite} key={index}/>
+            })}
         </div>
     )
 }
